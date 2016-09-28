@@ -16,6 +16,9 @@ alias clear='echo -e "\n\n\n\n\n\n\n\n\nConsole Cleared.";clear;'
 #Chrome alias:
 alias chrome='google-chrome'
 
+#time:
+alias time='/usr/bin/time'
+
 #Misc:
 alias top='top -d 2.0'
 alias pdflatex='pdflatex -file-line-error -interaction nonstopmode'
@@ -39,7 +42,6 @@ if [ -f /usr/local/bin/waffles_plot ]
       fi
     }
 fi
-
 
 #Check for existance of fooplot in usr/local/bin
 [ -f /usr/local/bin/fooplot ] && alias plot='fooplot'
