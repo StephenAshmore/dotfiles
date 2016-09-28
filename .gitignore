@@ -1,0 +1,11 @@
+#ignore everything
+*
+*.*
+
+*But not these:
+!.gitignore
+!.bashrc
+!.bash_aliases
+
+# ...even if they are in subdirectories
+*/
