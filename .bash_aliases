@@ -55,6 +55,8 @@ if [ -f /usr/local/bin/waffles_plot ]
     function scatter() {
       if [ ! $# == 2 ]; then
         echo "Usage: scatter <arff file> <out svg>"
+        echo "Uses default size of 1920 by 1080."
+        echo "If you want a different size, here's the command: waffles_plot scatter -size 1920 1080 row <arff file> 0 1 > <out svg>"
       else
         waffles_plot scatter -size 1920 1080 row $1 0 1 > $2
         chrome $2
@@ -98,10 +100,17 @@ fi
 }
 
 # Calculate Math from command line:
-math() {
-    calc="$@"
-    # Uncomment the below for (p → +) and (x → *)
-    #calc="${calc//p/+}"
-    #calc="${calc//x/*}"
-    echo -ne "$calc\n quit" | gcalccmd | sed 's:^> ::g'
-}
+if [ -f /usr/bin/gcalccmd ]
+  then
+  function math() {
+      calc="$@"
+      # Uncomment the below for (p → +) and (x → *)
+      #calc="${calc//p/+}"
+      #calc="${calc//x/*}"
+      echo -ne "$calc\n quit" | gcalccmd | sed 's:^> ::g'
+  }
+else
+  function math() {
+    echo "You need to install gnome-calculator in order to use this method."
+  }
+fi
