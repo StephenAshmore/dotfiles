@@ -30,6 +30,25 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias myip="curl http://ipecho.net/plain; echo" #Get my IP
 
+# Make beep work in terminator:
+alias beep="paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
+
+# Ding Pomodoro Technique Alias:
+# Requires Ding to be installled.
+if [ -f ~/apps/ding/ding/ding.py ]
+  then
+    function ding() {
+      if [ -z $@ ]; then
+        echo "You must provide a time to ding, such as: in or at. Ex. in 5s, in 1h."
+      else
+        ~/apps/ding/ding/ding.py $@  -c "paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
+      fi
+    }
+    function pomo() {
+      ~/apps/ding/ding/ding.py in 25m  -c "paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
+    }
+fi
+
 #Scatter plot alias:
 if [ -f /usr/local/bin/waffles_plot ]
   then
@@ -55,25 +74,34 @@ function extract {
         # NAME=${1%.*}
         # mkdir $NAME && cd $NAME
         case $1 in
-          *.tar.bz2)   tar xvjf ../$1    ;;
-          *.tar.gz)    tar xvzf ../$1    ;;
-          *.tar.xz)    tar xvJf ../$1    ;;
-          *.lzma)      unlzma ../$1      ;;
-          *.bz2)       bunzip2 ../$1     ;;
-          *.rar)       unrar x -ad ../$1 ;;
-          *.gz)        gunzip ../$1      ;;
-          *.tar)       tar xvf ../$1     ;;
-          *.tbz2)      tar xvjf ../$1    ;;
-          *.tgz)       tar xvzf ../$1    ;;
-          *.zip)       unzip ../$1       ;;
-          *.Z)         uncompress ../$1  ;;
-          *.7z)        7z x ../$1        ;;
-          *.xz)        unxz ../$1        ;;
-          *.exe)       cabextract ../$1  ;;
+          *.tar.bz2)   tar xvjf $1    ;;
+          *.tar.gz)    tar xvzf $1    ;;
+          *.tar.xz)    tar xvJf $1    ;;
+          *.lzma)      unlzma $1      ;;
+          *.bz2)       bunzip2 $1     ;;
+          *.rar)       unrar x -ad $1 ;;
+          *.gz)        gunzip $1      ;;
+          *.tar)       tar xvf $1     ;;
+          *.tbz2)      tar xvjf $1    ;;
+          *.tgz)       tar xvzf $1    ;;
+          *.zip)       unzip $1       ;;
+          *.Z)         uncompress $1  ;;
+          *.7z)        7z x $1        ;;
+          *.xz)        unxz $1        ;;
+          *.exe)       cabextract $1  ;;
           *)           echo "extract: '$1' - unknown archive method" ;;
         esac
     else
         echo "$1 - file does not exist"
     fi
 fi
+}
+
+# Calculate Math from command line:
+math() {
+    calc="$@"
+    # Uncomment the below for (p → +) and (x → *)
+    #calc="${calc//p/+}"
+    #calc="${calc//x/*}"
+    echo -ne "$calc\n quit" | gcalccmd | sed 's:^> ::g'
 }
