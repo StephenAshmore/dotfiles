@@ -32,7 +32,7 @@ alias myip="curl http://ipecho.net/plain; echo" #Get my IP
 
 function svgforlatex() {
   if [ ! $# == 2 ]; then
-    echo "Usage: svgtolatex filename.svg output.pdf"
+    echo "Usage: svgforlatex filename.svg output.pdf"
   else
     inkscape -D -z --file=$1 --export-pdf=$2
   fi

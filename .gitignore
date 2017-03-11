@@ -6,6 +6,7 @@
 !.gitignore
 !.bashrc
 !.bash_aliases
+!.profile
 
 # ...even if they are in subdirectories
 */
