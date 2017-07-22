@@ -5,7 +5,7 @@ alias l='ls -CF'
 alias sl='ls'
 
 #safe rm:
-alias rm='rm --preserve-root'
+#alias rm='rm --preserve-root'
 
 #mkdir alias
 alias mk='mkdir'
@@ -19,16 +19,27 @@ alias chrome='google-chrome'
 #time:
 alias time='/usr/bin/time'
 
+#Game Dev:
+alias love='/Applications/love.app/Contents/MacOS/love'
+
 #Misc:
 alias top='top -d 2.0'
 alias pdflatex='pdflatex -file-line-error -interaction nonstopmode'
 alias findhere='find . -name '
 alias df="df -Tha --total"
 alias du="du -ach | sort -h"
-alias ps="ps auxf"
+alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias myip="curl http://ipecho.net/plain; echo" #Get my IP
+
+# Vagrant Specific Aliases for SupplyPike
+alias vagrantup="cd ~/casestack/vm;vagrant up"
+alias vagrantssh="cd ~/casestack/vm;vagrant ssh"
+alias vagrantall="cd ~/casestack/vm;vagrant up;vagrant ssh"
+
+# Activate Tensorflow:
+alias tensorflow="source ~/tensorflow/bin/activate"
 
 function svgforlatex() {
   if [ ! $# == 2 ]; then

@@ -19,8 +19,7 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-
-. /home/stephen/libraries/torch/install/bin/torch-activate
-
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules_global/bin:$PATH"
+
+. /Users/stephen/torch/install/bin/torch-activate

@@ -8,6 +8,9 @@ case $- in
       *) return;;
 esac
 
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
 
 
 build_ps1() {
@@ -92,3 +95,6 @@ fi
 
 export PATH="$HOME/.rbenv/bin:$HOME/bin:$PATH"
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+
+. /Users/stephen/torch/install/bin/torch-activate
