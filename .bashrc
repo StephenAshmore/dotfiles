@@ -96,5 +96,3 @@ fi
 export PATH="$HOME/.rbenv/bin:$HOME/bin:$PATH"
 #export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
-
-. /Users/stephen/torch/install/bin/torch-activate
