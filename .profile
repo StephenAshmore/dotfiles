@@ -22,4 +22,3 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules_global/bin:$PATH"
 
-. /Users/stephen/torch/install/bin/torch-activate
