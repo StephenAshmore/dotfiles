@@ -118,24 +118,3 @@ function extract {
 fi
 }
 
-# Calculate Math from command line:
-if [ -f /usr/bin/gcalccmd ]
-  then
-  function math() {
-      calc="$@"
-      if [ "$calc" = "help" ]; then
-        echo "Usage: math <expression>"
-        echo "Examples: math 2*2 or math 'ln(2)'"
-        echo "Available Functions are: ln, sqrt, abs, int, frac, sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, asinh, acosh, atanh, ones, twos."
-      else
-        # Uncomment the below for (p → +) and (x → *)
-        #calc="${calc//p/+}"
-        #calc="${calc//x/*}"
-        echo -ne "$calc\n quit" | gcalccmd | sed 's:^> ::g'
-      fi
-  }
-else
-  function math() {
-    echo "You need to install gnome-calculator in order to use this method."
-  }
-fi
