@@ -33,11 +33,6 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 alias myip="curl http://ipecho.net/plain; echo" #Get my IP
 
-# Vagrant Specific Aliases for SupplyPike
-alias vagrantup="cd ~/casestack/vm;vagrant up"
-alias vagrantssh="cd ~/casestack/vm;vagrant ssh"
-alias vagrantall="cd ~/casestack/vm;vagrant up;vagrant ssh"
-
 # Activate Tensorflow:
 alias tensorflow="source ~/tensorflow/bin/activate"
 

@@ -22,3 +22,15 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules_global/bin:$PATH"
 
+# Docker Machine start up using vmware
+docker_running=$(docker-machine ls | grep dev)
+if [[ "$docker_running" == *"Stopped"* ]]
+then
+	echo "*ERROR* Docker machine dev not running. Attempting to start it..."
+	docker-machine start dev 
+	eval "$(docker-machine env dev)"	
+elif [[ "$docker_running" == *"Running"* ]]
+then
+	eval $(docker-machine env dev)
+fi
+
