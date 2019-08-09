@@ -19,15 +19,16 @@ alias chrome='google-chrome'
 #time:
 alias time='/usr/bin/time'
 
+# prettify JSON
+alias pjson='python -m json.tool'
+
 #Game Dev:
 alias love='/Applications/love.app/Contents/MacOS/love'
 
 #Misc:
-alias top='top -d 2.0'
 alias pdflatex='pdflatex -file-line-error -interaction nonstopmode'
 alias findhere='find . -name '
-alias df="df -Tha --total"
-alias du="du -ach | sort -h"
+alias du="du -ach"
 alias ps="ps aux"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
@@ -49,19 +50,9 @@ alias beep="paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=12
 
 # Ding Pomodoro Technique Alias:
 # Requires Ding to be installled.
-if [ -f ~/apps/ding/ding/ding.py ]
-  then
-    function ding() {
-      if [ -z $@ ]; then
-        echo "You must provide a time to ding, such as: in or at. Ex. in 5s, in 1h."
-      else
-        ~/apps/ding/ding/ding.py $@  -c "paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
-      fi
-    }
-    function pomo() {
-      ~/apps/ding/ding/ding.py in 25m  -c "paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
-    }
-fi
+function pomo() {
+  ding in 25m  -c "paplay /usr/share/sounds/KDE-Im-Low-Priority-Message.ogg --volume=125000"
+}
 
 #Scatter plot alias:
 if [ -f /usr/local/bin/waffles_plot ]
@@ -113,3 +104,4 @@ function extract {
 fi
 }
 
+alias stern="stern --tail 10 --template '{{color .PodColor .PodName}} {{.Message}}' --exclude 'GET /health'"

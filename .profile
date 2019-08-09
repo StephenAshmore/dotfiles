@@ -21,16 +21,15 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.node_modules_global/bin:$PATH"
+export PATH="/usr/local/opt/icu4c/sbin:$PATH"
+export PATH="/usr/local/Cellar/python/3.7.2_1/:$PATH"
 
-# Docker Machine start up using vmware
-docker_running=$(docker-machine ls | grep dev)
-if [[ "$docker_running" == *"Stopped"* ]]
-then
-	echo "*ERROR* Docker machine dev not running. Attempting to start it..."
-	docker-machine start dev 
-	eval "$(docker-machine env dev)"	
-elif [[ "$docker_running" == *"Running"* ]]
-then
-	eval $(docker-machine env dev)
-fi
 
+# added by Anaconda3 5.2.0 installer
+# export PATH="/anaconda3/bin:$PATH"
+
+# Setting PATH for Python 2.7
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
+PATH="/Users/stephen/Library/Python/3.7/bin:${PATH}"
+export PATH
